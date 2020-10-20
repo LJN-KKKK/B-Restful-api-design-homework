@@ -11,14 +11,6 @@ import java.util.Map;
 
 @Service
 public class StudentService {
-//    private final List<Student> studentList = new ArrayList<Student>(){{
-//        add(new Student(1, "111", "male", ""));
-//        add(new Student(2, "222", "female", ""));
-//        add(new Student(3, "333", "female", ""));
-//        add(new Student(4, "444", "male", ""));
-//        add(new Student(5, "555", "female", ""));
-//        add(new Student(6, "666", "male", ""));
-//    }};
 
     private final Map<Integer, Student> studentList = new HashMap<Integer, Student>(){{
         put(1, new Student(1, "111", "male", ""));
@@ -30,7 +22,6 @@ public class StudentService {
     }};
 
     public Student addStudent(Student student) {
-//        studentList.add(student);
         studentList.put(student.getId(), student);
         return student;
     }
@@ -42,11 +33,6 @@ public class StudentService {
         else{
             throw new StudentNotExistException("student does not exist");
         }
-//        for (Student student : studentList) {
-//            if (student.getId() == id)
-//                return student;
-//        }
-//        throw new StudentNotExistException("student does not exist");
     }
 
     public void deleteStudent(int id){
@@ -56,18 +42,10 @@ public class StudentService {
         else{
             throw new StudentNotExistException("student does not exist");
         }
-
-//        for (Student student : studentList) {
-//            if (student.getId() == id) {
-//                studentList.remove(student);
-//                return;
-//            }
-//        }
-//        throw new StudentNotExistException("student does not exist");
     }
 
     public List<Student> getAll(String gender) {
-        List<Student> students = new ArrayList<Student>(studentList.values());
+        List<Student> students = new ArrayList<>(studentList.values());
         if(gender == null) return students;
         else{
             List<Student> studentsByGender = new ArrayList<>();
@@ -83,8 +61,10 @@ public class StudentService {
         if(!studentList.containsKey(id)){
             throw new StudentNotExistException("student does not exist");
         }
-        studentList.remove(id);
-        studentList.put(student.getId(),student);
+        Student studentOld = studentList.get(id);
+        studentOld.setName(student.getName());
+        studentOld.setGender(student.getGender());
+        studentOld.setNote(student.getNote());
         return studentList.get(id);
     }
 }
