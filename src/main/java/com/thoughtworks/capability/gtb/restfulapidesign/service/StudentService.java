@@ -17,9 +17,18 @@ public class StudentService {
         add(new Student(5, "555", "female", ""));
         add(new Student(6, "666", "male", ""));
     }};
+
     public Student addStudent(Student student) {
         studentList.add(student);
         return student;
+    }
+
+    public Student getStudentById(int id) {
+        for (Student student : studentList) {
+            if (student.getId() == id)
+                return student;
+        }
+        throw new StudentNotExistException("student does not exist");
     }
 
     public void deleteStudent(int id){

@@ -28,6 +28,11 @@ public class StudentController {
         studentService.deleteStudent(id);
     }
 
+    @GetMapping("/{id}")
+    public Student getStudentById(@PathVariable int id) {
+        return studentService.getStudentById(id);
+    }
+
     @GetMapping
     public List<Student> getStudents(@RequestParam(value="gender", required = false) String gender){
         return studentService.getAll(gender);
