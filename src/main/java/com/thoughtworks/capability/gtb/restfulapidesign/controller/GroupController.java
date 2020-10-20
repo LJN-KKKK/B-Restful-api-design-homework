@@ -27,4 +27,10 @@ public class GroupController {
     public Group updateGroup(@PathVariable Integer id, @RequestBody String name) {
         return groupService.updateGroupName(id, name);
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Group> createGroup() {
+        return groupService.createGroups();
+    }
 }

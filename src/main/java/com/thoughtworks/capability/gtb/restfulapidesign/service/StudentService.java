@@ -19,6 +19,8 @@ public class StudentService {
         put(4, new Student(4, "444", "male", ""));
         put(5, new Student(5, "555", "female", ""));
         put(6, new Student(6, "666", "male", ""));
+        put(7, new Student(7, "777", "male", ""));
+        put(8, new Student(8, "888", "male", ""));
     }};
 
     public Student addStudent(Student student) {
@@ -66,5 +68,9 @@ public class StudentService {
         studentOld.setGender(student.getGender());
         studentOld.setNote(student.getNote());
         return studentList.get(id);
+    }
+
+    public Map<Integer, Student> getStudentList() {
+        return studentList;
     }
 }

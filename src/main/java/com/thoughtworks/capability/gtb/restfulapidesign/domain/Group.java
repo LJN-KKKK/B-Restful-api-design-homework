@@ -12,7 +12,7 @@ import java.util.List;
 public class Group {
     private Integer id;
     private String name;
+    List<Student> studentList;
     private String note;
 
-    List<Student> studentList;
 }
