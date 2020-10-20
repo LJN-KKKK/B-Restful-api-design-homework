@@ -37,4 +37,10 @@ public class StudentController {
     public List<Student> getStudents(@RequestParam(value="gender", required = false) String gender){
         return studentService.getAll(gender);
     }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Student updateOneStudent(@PathVariable int id, @RequestBody Student student) {
+        return studentService.updateStudent(id, student);
+    }
 }
